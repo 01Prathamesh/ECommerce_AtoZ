@@ -1,1 +1,37 @@
 <!-- This is Home Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Store</h1>
+    </header>
+
+    <main>
+        <h2>Featured Products</h2>
+        <div class="product-list">
+            {% for product in featured_products %}
+                <div class="product-item">
+                    <h3>{{ product.name }}</h3>
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+                    <p>{{ product.description }}</p>
+                    <p>Price: ${{ product.price }}</p>
+                    <button>Add to Cart</button>
+                </div>
+            {% empty %}
+                <p>No featured products available at this time.</p>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} ECommerce_AtoZ</p>
+    </footer>
+</body>
+</html>
