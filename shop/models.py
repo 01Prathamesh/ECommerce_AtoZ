@@ -1,4 +1,6 @@
+import os
 from django.db import models
+from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -39,6 +41,15 @@ class Product(models.Model):
     def is_in_stock(self):
         """Check if the product is in stock."""
         return self.stock > 0
+    
+    def save(self, *args, **kwargs):
+        if self.image:
+            # Get the original file name
+            original_filename = self.image.name
+            # Use a slugified version of the product name and original filename to avoid collisions
+            name, ext = os.path.splitext(original_filename)
+            self.image.name = f"{slugify(self.name)}{ext}"  # Store image with a slugified name
+        super().save(*args, **kwargs)
 
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
