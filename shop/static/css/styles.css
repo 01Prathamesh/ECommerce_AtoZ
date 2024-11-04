@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -12,19 +12,21 @@ body {
 }
 
 header {
-    background-color: #7f50a5;
+    background-color: #6a1b9a; /* Deep purple for header */
     color: #fff;
     padding: 20px 0;
+    text-align: center;
 }
 
 header h1 {
-    text-align: center;
+    margin: 0;
+    font-size: 2.5em; /* Larger font for the header */
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    text-align: center;
+    margin: 15px 0 0 0;
 }
 
 nav ul li {
@@ -35,11 +37,23 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffdd57; /* Highlight color on hover */
+}
+
+main {
+    padding: 20px 0;
 }
 
 h2 {
     text-align: center;
     margin: 20px 0;
+    font-size: 2em;
+    color: #333;
 }
 
 .product-list {
@@ -55,18 +69,20 @@ h2 {
     margin: 15px;
     padding: 20px;
     text-align: center;
-    width: 200px;
+    width: 300px; /* Fixed width for product items */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-item:hover {
     transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .product-image {
     max-width: 100%;
     height: auto;
+    border-radius: 5px;
 }
 
 .product-description {
@@ -76,16 +92,18 @@ h2 {
 .product-price {
     font-weight: bold;
     color: #333;
+    font-size: 1.2em;
 }
 
 .btn {
     background-color: #28a745;
     color: white;
-    padding: 10px;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .btn:hover {
@@ -93,13 +111,11 @@ h2 {
 }
 
 footer {
-    background-color: #7f50a5;
+    background-color: #6a1b9a;
     color: #fff;
     text-align: center;
     padding: 15px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    margin-top: 20px;
 }
 
 @media (max-width: 600px) {
