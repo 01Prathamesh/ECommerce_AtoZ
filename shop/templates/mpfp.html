@@ -1,1 +1,40 @@
 <!-- This is Mock Payment Failure Page -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed - ECommerce AtoZ</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Payment Failed!</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
+                    <li><a href="{% url 'product_listing' %}">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <p>We're sorry, but your payment could not be processed. Please try again.</p>
+            <a href="{% url 'checkout' %}" class="btn">Return to Checkout</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year }} ECommerce AtoZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
