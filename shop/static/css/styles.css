@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #7f50a5;
     color: #fff;
     padding: 20px 0;
 }
@@ -93,11 +93,11 @@ h2 {
 }
 
 footer {
-    background-color: #333;
+    background-color: #7f50a5;
     color: #fff;
     text-align: center;
     padding: 15px 0;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
