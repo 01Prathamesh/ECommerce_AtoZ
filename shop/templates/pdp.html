@@ -1,1 +1,51 @@
 <!-- This is Product Detail Page -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - ECommerce AtoZ</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>{{ product.name }}</h1>
+            <nav>
+                <ul>
+                    <li><a class="btn" href="{% url 'homepage' %}">Home</a></li>
+                    <li><a class="btn" href="{% url 'product_listing' %}">Products</a></li>
+                    <li><a class="btn" href="{% url 'checkout' %}">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="product-detail">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
+                <h2>Description</h2>
+                <p>{{ product.description }}</p>
+                <p class="product-price">Price: ${{ product.price }}</p>
+                <form action="{% url 'checkout' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" class="btn">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year }} ECommerce AtoZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
