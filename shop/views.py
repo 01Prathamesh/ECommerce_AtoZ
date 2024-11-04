@@ -1,6 +1,9 @@
 from datetime import datetime 
 from django.shortcuts import render
 from .models import Product
+from rest_framework import generics
+from .serializers import ProductSerializer
+
 
 def homepage(request):
     # Retrieve featured products
@@ -44,3 +47,11 @@ def payment_success(request):
 
 def payment_failure(request):
     return render(request, 'mpfp.html', {'current_year': datetime.now().year})
+
+class ProductList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
