@@ -1,1 +1,40 @@
 <!-- This is Mock Payment Success Page -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - ECommerce AtoZ</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Payment Successful!</h1>
+            <nav>
+                <ul>
+                    <li><a class="btn" href="{% url 'homepage' %}">Home</a></li>
+                    <li><a class="btn" href="{% url 'product_listing' %}">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <p>Thank you for your purchase! Your order has been placed successfully.</p>
+            <a href="{% url 'homepage' %}" class="btn">Return to Home</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year }} ECommerce AtoZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
