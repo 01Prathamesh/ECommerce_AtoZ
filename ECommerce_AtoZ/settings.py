@@ -121,7 +121,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # This is where static files will be collected
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'shop/static'),  # Your custom static files directory
+    os.path.join(BASE_DIR, 'shop', 'static'),  # Your custom static files directory
 ]
 
 DEBUG = True
