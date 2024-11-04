@@ -38,3 +38,9 @@ def checkout(request):
         return render(request, 'mpp.html', {'current_year': datetime.now().year})
 
     return render(request, 'cop.html', {'current_year': datetime.now().year})
+
+def payment_success(request):
+    return render(request, 'mpsp.html', {'current_year': datetime.now().year})
+
+def payment_failure(request):
+    return render(request, 'mpfp.html', {'current_year': datetime.now().year})
