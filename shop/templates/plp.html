@@ -1,1 +1,57 @@
 <!-- This is Product Listing Page -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing - ECommerce AtoZ</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>All Products</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
+                    <li><a href="{% url 'product_listing' %}">Products</a></li>
+                    <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="filters">
+                <h2>Filters</h2>
+                <!-- Implement filter options here -->
+            </div>
+            <div class="product-list">
+                {% for product in products %}
+                    <div class="product-item">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
+                        <h3>{{ product.name }}</h3>
+                        <p class="product-price">Price: ${{ product.price }}</p>
+                        <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                {% empty %}
+                    <p>No products available at this time.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year }} ECommerce AtoZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
