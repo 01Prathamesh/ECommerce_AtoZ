@@ -3,7 +3,8 @@ from django.shortcuts import render
 from .models import Product
 from rest_framework import generics
 from .serializers import ProductSerializer
-
+from .models import Category
+from .serializers import CategorySerializer
 
 def homepage(request):
     # Retrieve featured products
@@ -55,3 +56,8 @@ class ProductList(generics.ListCreateAPIView):
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class CategoryList(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
