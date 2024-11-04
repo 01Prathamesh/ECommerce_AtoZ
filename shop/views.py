@@ -20,3 +20,13 @@ def product_listing(request):
         'current_year': datetime.now().year,
     }
     return render(request, 'plp.html', context)
+
+def product_detail(request, product_id):
+    # Retrieve the specific product
+    product = Product.objects.get(id=product_id)
+
+    context = {
+        'product': product,
+        'current_year': datetime.now().year,
+    }
+    return render(request, 'pdp.html', context)
