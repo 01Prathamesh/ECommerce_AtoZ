@@ -35,7 +35,7 @@ def checkout(request):
     if request.method == 'POST':
         # Handle form submission and process order here
         # For simplicity, we assume the order is always successful
-        return render(request, 'mpp.html', {'current_year': datetime.now().year})
+        return render(request, 'mpsp.html', {'current_year': datetime.now().year})
 
     return render(request, 'cop.html', {'current_year': datetime.now().year})
 
