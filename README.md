@@ -42,13 +42,15 @@ To run this project, you'll need to have Python and pip installed. You can insta
     
 Activate the virtual environment:
 
-    On macOS/Linux:
-    ```bash
-    source myenv/bin/activate
+On macOS/Linux:
+    
+        ```bash
+        source myenv/bin/activate
 
-    On Windows:
-    ```bash
-    myenv\Scripts\activate
+On Windows:
+
+        ```bash
+        myenv\Scripts\activate
 
 4. **Install the dependencies**:
     ```bash
@@ -75,7 +77,7 @@ Activate the virtual environment:
 - **POST /api/products/**: Create a new product (requires authentication).
 - **GET /api/categories/**: List all categories (if implemented).
 
-##Contribution
+## Contribution
     Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request.
 
 ## License
