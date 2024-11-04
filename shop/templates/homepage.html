@@ -6,33 +6,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Homepage - ECommerce AtoZ</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>Welcome to Our Store</h1>
+        <div class="container">
+            <h1>Welcome to Our Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
+                    <li><a href="{% url 'product_listing' %}">Products</a></li>
+                    <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <h2>Featured Products</h2>
-        <div class="product-list">
-            {% for product in featured_products %}
-                <div class="product-item">
-                    <h3>{{ product.name }}</h3>
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-                    <p>{{ product.description }}</p>
-                    <p>Price: ${{ product.price }}</p>
-                    <button>Add to Cart</button>
-                </div>
-            {% empty %}
-                <p>No featured products available at this time.</p>
-            {% endfor %}
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="product-list">
+                {% for product in featured_products %}
+                    <div class="product-item">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
+                        <h3>{{ product.name }}</h3>
+                        <p class="product-description">{{ product.description|truncatewords:15 }}</p>
+                        <p class="product-price">Price: ${{ product.price }}</p>
+                        <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                {% empty %}
+                    <p>No featured products available at this time.</p>
+                {% endfor %}
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; {{ current_year }} ECommerce_AtoZ</p>
+        <div class="container">
+            <p>&copy; {{ current_year }} ECommerce AtoZ. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
