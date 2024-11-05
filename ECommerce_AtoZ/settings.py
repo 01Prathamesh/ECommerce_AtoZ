@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,11 +77,14 @@ WSGI_APPLICATION = 'ECommerce_AtoZ.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('ecomerce_atoz_db'),
+        'USER': config('ecomerce_atoz_db_user'),
+        'PASSWORD': config('HSNMKhgpUKb0yHZin1SZWPENPZr4oVpO'),
+        'HOST': config('dpg-csks40e8ii6s738090qg-a'),
+        'PORT': config('5432', default='5432'),
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
