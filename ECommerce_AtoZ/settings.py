@@ -78,13 +78,14 @@ WSGI_APPLICATION = 'ECommerce_AtoZ.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('ecomerce_atoz_db'),
-        'USER': config('ecomerce_atoz_db_user'),
-        'PASSWORD': config('HSNMKhgpUKb0yHZin1SZWPENPZr4oVpO'),
-        'HOST': config('dpg-csks40e8ii6s738090qg-a'),
-        'PORT': config('5432', default='5432'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', default='5432'),
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
