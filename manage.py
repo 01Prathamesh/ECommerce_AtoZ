@@ -3,6 +3,10 @@
 import os
 import sys
 
+# For serverless environments like Vercel, we need to define the 'app' or 'handler'
+if 'VERCEL' in os.environ:
+    from django.core.wsgi import get_wsgi_application
+    application = get_wsgi_application()
 
 def main():
     """Run administrative tasks."""
@@ -16,7 +20,6 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-
 
 if __name__ == '__main__':
     main()
