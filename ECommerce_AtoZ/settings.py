@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 from decouple import config
 from urllib.parse import urlparse
+import boto3
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +30,9 @@ SECRET_KEY = 'django-insecure-1@um7h6g712lg3w6ds7yud0yczvmd0fjc^sffl##a!fc%nx^5(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
@@ -154,4 +159,30 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'products')
 
 #For allowing our Django application to accept requests from any subdomain of vercel.app
-ALLOWED_HOSTS = ['.vercel.app']
+# ALLOWED_HOSTS = ['.vercel.app']
+
+# Static files settings for AWS S3
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME') 
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID') 
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY') 
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='us-west-2')
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+# Static files configuration
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media files configuration
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Static URL and Media URL for serving files from S3
+AWS_LOCATION = 'static'
+STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{AWS_LOCATION}/'
+
+# Media files URL configuration (you can customize this as needed)
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/media/'
+
+# Specify the root directory for static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # This is where static files will be collected
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'shop', 'static'),  # Custom static files directory in your project
+]

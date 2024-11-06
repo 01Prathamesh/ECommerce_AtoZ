@@ -3,7 +3,7 @@
 import os
 import sys
 
-# For serverless environments like Vercel, we need to define the 'app' or 'handler'
+# Define the WSGI app handler for Vercel
 if 'VERCEL' in os.environ:
     from django.core.wsgi import get_wsgi_application
     application = get_wsgi_application()

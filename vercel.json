@@ -1,19 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "manage.py",
-        "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "50mb"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "ECommerce_AtoZ/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxDuration": 10
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/manage.py"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/ECommerce_AtoZ/wsgi.py"
+    }
+  ]
+}
