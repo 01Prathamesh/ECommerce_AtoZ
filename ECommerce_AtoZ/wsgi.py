@@ -41,3 +41,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ECommerce_AtoZ.settings')
 
 # Get the WSGI application callable.
 application = get_wsgi_application()
+
+# Vercel expects either 'app' or 'handler', so we'll define `app` here
+app = application  # Expose the WSGI app as `app`
+
