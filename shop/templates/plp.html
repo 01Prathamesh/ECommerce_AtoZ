@@ -37,7 +37,7 @@
                         <h3>{{ product.name }}</h3>
                         <p class="product-price">Price: Rs.{{ product.price }}</p>
                         <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
-                        <button class="btn add-to-cart">Add to Cart</button>
+                        <button class="btn add-to-cart" data-product-id="{{ product.id }}">Add to Cart</button>
                     </div>
                 {% empty %}
                     <p>No products available at this time.</p>

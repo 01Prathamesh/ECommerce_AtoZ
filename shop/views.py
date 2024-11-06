@@ -7,23 +7,40 @@ from .models import Category
 from .serializers import CategorySerializer
 
 def homepage(request):
-    # Retrieve featured products
+    # Retrieve featured products and categories
     featured_products = Product.objects.filter(is_active=True, is_featured=True)
+    categories = Category.objects.all()
 
     context = {
-        'featured_products': featured_products
+        'featured_products': featured_products,
+        'categories': categories,
+        'current_year': datetime.now().year
     }
     return render(request, 'homepage.html', context)
 
+
 def product_listing(request):
-    # Retrieve all products
+    # Retrieve products based on category filter or search query
+    category_slug = request.GET.get('category')
+    search_query = request.GET.get('search')
+
     products = Product.objects.filter(is_active=True)
+
+    if category_slug:
+        products = products.filter(category__slug=category_slug)
+    
+    if search_query:
+        products = products.filter(name__icontains=search_query)
+
+    categories = Category.objects.all()
 
     context = {
         'products': products,
+        'categories': categories,
         'current_year': datetime.now().year,
     }
     return render(request, 'plp.html', context)
+
 
 def product_detail(request, product_id):
     # Retrieve the specific product

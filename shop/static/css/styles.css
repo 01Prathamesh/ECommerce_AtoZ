@@ -124,3 +124,38 @@ footer {
         align-items: center;
     }
 }
+
+/* Category Section */
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.category-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: calc(33.33% - 40px);  /* For desktop, 3 items per row */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.category-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.category-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .category-item {
+        width: 100%;  /* On mobile, show 1 item per row */
+    }
+}
