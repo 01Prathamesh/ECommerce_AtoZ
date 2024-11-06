@@ -30,7 +30,7 @@
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
                 <h2>Description</h2>
                 <p>{{ product.description }}</p>
-                <p class="product-price">Price: ${{ product.price }}</p>
+                <p class="product-price">Price: Rs.{{ product.price }}</p>
                 <form action="{% url 'checkout' %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="product_id" value="{{ product.id }}">
