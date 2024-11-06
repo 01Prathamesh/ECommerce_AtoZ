@@ -29,14 +29,14 @@
                 {% csrf_token %}
                 <input type="hidden" name="product_id" value="{{ product.id }}">  
                 <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required><br><br>
                 <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required><br><br>
                 <label for="address">Address:</label><br>
-                <textarea id="address" name="address" required></textarea>
+                <textarea id="address" name="address" required></textarea><br><br>
                 <label for="quantity">Quantity:</label><br>
-                <input type="number" id="quantity" name="quantity" value="1" min="1" required>  
-                <input type="hidden" name="product_id" value="{{ product.id }}"><br>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" required> <br><br> 
+                <input type="hidden" name="product_id" value="{{ product.id }}"><br><br>
                 <button type="submit" class="btn">Complete Purchase</button>
             </form>
             
