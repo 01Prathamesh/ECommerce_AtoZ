@@ -3,14 +3,10 @@
 import os
 import sys
 
-# Define the WSGI app handler for Vercel
-if 'VERCEL' in os.environ:
-    from django.core.wsgi import get_wsgi_application
-    application = get_wsgi_application()
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ECommerce_AtoZ.settings')
+    
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -19,6 +15,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    
     execute_from_command_line(sys.argv)
 
 if __name__ == '__main__':
