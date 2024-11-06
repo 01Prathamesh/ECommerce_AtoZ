@@ -35,7 +35,7 @@
                     <div class="product-item">
                         <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
                         <h3>{{ product.name }}</h3>
-                        <p class="product-price">Price: ${{ product.price }}</p>
+                        <p class="product-price">Price: Rs.{{ product.price }}</p>
                         <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
                         <button class="btn add-to-cart">Add to Cart</button>
                     </div>
