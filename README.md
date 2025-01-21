@@ -43,7 +43,7 @@ To run this project, you'll need to have Python and pip installed. You can insta
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/ECommerce_AtoZ.git
+   git clone https://github.com/01Prathamesh/ECommerce_AtoZ.git
 
 2. **Navigate to the project directory**:
     ```bash
